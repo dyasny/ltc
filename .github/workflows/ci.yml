@@ -35,6 +35,15 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v4.1.1
         with:
-          file: Dockerfile          
+          file: Dockerfile
+          load: true
           push: true
           tags: dyasny/ltc:latest
+
+      - name: Scan image
+        uses: anchore/scan-action@v3
+        with:
+          image: "localbuild/ltc:latest"
+          fail-build: true
+          severity-cutoff: high
+
