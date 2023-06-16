@@ -11,6 +11,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+#Set Nomad/Vault.Consul access secrets via ENV
+env:
+  NOMAD_HTTP_AUTH: ${{ secrets.NOMAD_HTTP_AUTH }}
+  VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
+  CONSUL_HTTP_TOKEN: ${{ secrets.CONSUL_HTTP_TOKEN }}
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
